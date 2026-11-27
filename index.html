@@ -2,13 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- maximum-scale と user-scalable は、スマホで二本指の拡大縮小を止めるための指定（iPhoneは styles.css の touch-action で止める）。 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="theme-color" content="#f7f6f1">
     <title>ヨクジツ|学習の復習</title>
     <!-- ?v= の数字は版番号。ブラウザが覚えている古い styles.css / app.js を使い回さないために付けている。
          コードを変えたら、ここの2か所・app.js の APP_VERSION・sw.js の CACHE を一緒に増やす。 -->
-    <link rel="stylesheet" href="styles.css?v=6">
-    <script src="app.js?v=6" defer></script>
+    <link rel="stylesheet" href="styles.css?v=7">
+    <script src="app.js?v=7" defer></script>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon-192.png">
   </head>

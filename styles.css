@@ -1,4 +1,6 @@
 * { box-sizing: border-box; }
+/* スマホで二本指の拡大縮小と、ダブルタップの拡大を止める。上下左右のスクロールはそのまま使える。 */
+html, body { touch-action: pan-x pan-y; }
 :root { color-scheme: light; --paper:#f7f6f1; --ink:#252724; --line:#d9d6cd; --gold:#c49c3e; }
 body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.85 "Hiragino Mincho ProN","Yu Mincho",serif; }
 button,input,textarea,select { font:inherit; color:inherit; }

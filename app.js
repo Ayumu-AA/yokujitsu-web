@@ -1,7 +1,7 @@
 "use strict";
 // アプリの版。画面・コードを変えたら、sw.js の CACHE と index.html の ?v= も一緒に増やす。
 // 画面の一番下に表示されるので、古いキャッシュのままかどうかを見分けられる。
-const APP_VERSION = "v6（ジャンルの追加・名前変更・削除）";
+const APP_VERSION = "v7（ジャンルの追加・名前変更・削除）";
 // 日付とJavaの対応：LocalDate → YYYY-MM-DD形式の文字列。
 const $ = id => document.getElementById(id);
 // ジャンルは空から始まり、利用者が自分で追加する。
@@ -733,6 +733,10 @@ function checkDay() {
 }
 window.addEventListener("focus",checkDay);
 setInterval(checkDay,60000);
+// スマホで二本指の拡大縮小を止める。基本は styles.css の touch-action で止まるが、
+// それが効かないブラウザのために、二本指で動かしたときの既定の動作も止めておく。
+document.addEventListener("touchmove",event=>{if(event.touches.length>1)event.preventDefault()},{passive:false});
+document.addEventListener("gesturestart",event=>event.preventDefault());
 // アプリ本体のオフライン用コピーを用意する。記録の保存とは別。
 async function setupPWA() {
   if(!("serviceWorker" in navigator)) {

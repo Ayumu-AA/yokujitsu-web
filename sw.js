@@ -2,8 +2,9 @@
 // 画面・コードを変えて公開するときは版番号も増やす（app.js の APP_VERSION、index.html の ?v= と合わせる）。
 // v2：ジャンルの追加と検索に対応。v3：ジャンルを空から始める形に変更。
 // v4：index.html から ?v= 付きで読み込み、古い app.js / styles.css の使い回しを防ぐ。
-// v5：ジャンルの削除に対応。v6（2026-11-27）：ジャンルの名前変更に対応。
-const CACHE="yokujitsu-shell-v6";
+// v5：ジャンルの削除に対応。v6：ジャンルの名前変更に対応。
+// v7（2026-11-27）：スマホで二本指の拡大縮小を止める。
+const CACHE="yokujitsu-shell-v7";
 const APP=["./","./index.html","./styles.css","./app.js","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",event=>{
   event.waitUntil((async()=>{
@@ -27,7 +28,7 @@ self.addEventListener("fetch",event=>{
   event.respondWith((async()=>{
     // この版のコピーだけを使う（ほかの版のコピーが残っていても混ぜない）。
     const cache=await caches.open(CACHE);
-    // index.html は styles.css?v=6 のように版番号付きで読み込む。?より後ろは無視して探す。
+    // index.html は styles.css?v=7 のように版番号付きで読み込む。?より後ろは無視して探す。
     const cached=await cache.match(request,{ignoreSearch:true});if(cached)return cached;
     try{return await fetch(request)}
     catch(error){
